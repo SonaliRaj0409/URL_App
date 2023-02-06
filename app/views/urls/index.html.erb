@@ -1,0 +1,32 @@
+<div id="wrapper">
+  <div id="page-wrapper" class="gray-bg">
+    <div class="wrapper wrapper-content">
+      <div class="row list-row">
+        <div class="col-md-12">
+          <h3 class="page-heading text-center">
+            Welcome to short.com
+          </h3>
+        </div>
+        <br><br>
+        <br><br>
+        <div class="container">
+          <div class="col-md-6">
+            <b> Please enter your URL here</b>
+            <%= form_for :url, remote: true do |f|   %>
+              <div class="form-group">
+                <%= f.text_field  :long_url, class: "form-control" %>
+                <%= f.submit "Shorten", class: "btn btn-primary short_button" %>
+            <% end %>
+            <br>
+            <br>
+            <div>
+              <%= link_to "Stats", stats_urls_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+        <div id="default_url_list"><%= render 'urls/list', all_urls: ShortUrl.all %></div>
+        <div id="ajax_url_list"></div>
+      </div>
+    </div>
+  </div>
+</div>
